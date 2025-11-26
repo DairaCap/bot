@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 # API de Diccionario en ESPAÑOL
-DICTIONARY_API_URL = "https://api.dictionaryapi.dev/api/v2/entries/es/" 
+DICTIONARY_API_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/" 
 
 # ----------------------------------------------------
 # 2. FUNCIONES AUXILIARES
@@ -67,8 +67,11 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "📚 **Comandos Disponibles**:\n\n"
         "**DICCIONARIO**:\n"
         "`/definir <palabra>` \- Definición principal\.\n"
+        " Te ayuda a definir una palabra en inglés\n"
+        "Esto ayuda a ampliar tu vocabulario en tu segundo idioma\n\n"
         "`/sinonimos <palabra>` \- Ver sinónimos\.\n"
-        "`/antonimos <palabra>` \- Ver antónimos\.\n\n"
+        "`/antonimos <palabra>` \- Ver antónimos\.\n"
+        "Para palabras en inglés \n\n"
         "**EXTRAS**:\n"
         "`/chiste` \- Chiste aleatorio\.\n"
         "`/start` \- Reiniciar\.\n"
@@ -182,7 +185,7 @@ def main() -> None:
     application.add_handler(CommandHandler("definir", definir_command))
     application.add_handler(CommandHandler("sinonimos", sinonimos_command))
     application.add_handler(CommandHandler("antonimos", antonimos_command))
-
+    
     # Handler de mensajes de texto (si no es comando)
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo_message))
 
